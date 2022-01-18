@@ -1,13 +1,12 @@
 import org.junit.jupiter.api.Test;
-
 public class TestBasePage {
-    BasePage basePage = new BasePage();
+    WebSteps webSteps = new WebSteps();
     @Test
-    void testPage(){
-        basePage.OpenPage()
-                .SeachPage()
-                .ClickPage()
-                .CheckTab()
-                .AttachPage();
+    void testPage() {
+        webSteps.openPage()
+                .seachPage()
+                .clickPage()
+                .checkTab()
+                .attachPage();
     }
 }
