@@ -1,3 +1,4 @@
+import com.codeborne.selenide.Condition;
 import io.qameta.allure.Link;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
@@ -12,7 +13,7 @@ public class AnnotationsTest {
     @Owner("KHAKIMOV_TIMUR")
     @DisplayName("Проверка вхождения вкладки Issues в меню")
     @Link(value = "GitHub", url = "https://github.com")
-    void StepsTest() {
+    void stepTest() {
         step("Открытие страницы", () ->
                 open("https://github.com"));
         step("Поиск страницы ", () -> {
@@ -22,7 +23,7 @@ public class AnnotationsTest {
         step("Переход на страницу пользователя", () ->
                 $(By.linkText("KhakimovTim/qa_quru_lesson6")).click());
         step("Проверка Issues на странице", () -> {
-            $(withText("Issues")).should();
+            $(withText("Issues")).shouldBe(Condition.visible);
         });
     }
 }

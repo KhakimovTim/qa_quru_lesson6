@@ -1,3 +1,4 @@
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
@@ -12,22 +13,26 @@ public class WebSteps {
         open("https://github.com");
         return this;
     }
+
     @Step("Поиск страницы")
     public WebSteps seachPage() {
         $("[data-test-selector=nav-search-input]").click();
         $("[data-test-selector=nav-search-input]").setValue("KhakimovTim/qa_quru_lesson6").pressEnter();
         return this;
     }
+
     @Step("Переход на страницу пользователя")
     public WebSteps clickPage() {
         $(By.linkText("KhakimovTim/qa_quru_lesson6")).click();
         return this;
     }
+
     @Step("Проверка Issues на странице")
     public WebSteps checkTab() {
-        $(withText("Issues")).should();
+        $(withText("Issues")).shouldBe(Condition.visible);
         return this;
     }
+
     @Attachment(value = "Screenshot", type = "text/html", fileExtension = "html")
     public byte[] attachPage() {
         return WebDriverRunner.source().getBytes(StandardCharsets.UTF_8);
